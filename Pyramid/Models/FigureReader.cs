@@ -9,53 +9,34 @@ namespace Pyramid.Models
 {
     public class FigureReader
     {
-       public  void ReadByFile(Figure figure)
+        public List<Point> ReadByFile()
         {
+            var vertexes = new List<Point>();
             using (StreamReader sr = new StreamReader(@"..\..\cordinates.txt"))
             {
-                var vertex_one = sr.ReadLine().Split(' ');
-                try
-                {
-                    figure.vertexes.Add(new Point(double.Parse(vertex_one[0]), double.Parse(vertex_one[1]), double.Parse(vertex_one[2])));
-                }
-                catch(Exception)
-                {
-                    throw new FormatException("Wrong parse");
-                }
-
                 string line = sr.ReadLine();
                 while (line != null)
                 {
                     string[] coords = line.Split(' ');
                     if (coords.Length > 3)
                     {
-                        throw new Exception("Too much cords");
+                        throw new ArgumentOutOfRangeException("Too much cords");
                     }
-
                     try
                     {
-                        figure.vertexes.Add(new Point(
-                        double.Parse(coords[0]),
-                        double.Parse(coords[1]),
-                        double.Parse(coords[2]))
-                        );
+                        vertexes.Add(new Point(double.Parse(coords[0]), double.Parse(coords[1]), double.Parse(coords[2])));
                     }
-                    catch (Exception)
+                    catch(Exception)
                     {
-                        throw new Exception("Miss smth!");
+                        throw new FormatException("Wrng parse");
                     }
-
                     line = sr.ReadLine();
                 }
-
-                if (figure.vertexes.Count > 5)
-                {
-                    throw new Exception("Too much values");
-                }
             }
+            return vertexes;
         }
 
-        public void Print(Figure figure)
+        public static void Print(Figure figure)
         {
             using (StreamWriter sw = new StreamWriter(@"..\..\out.txt"))
             {
@@ -64,4 +45,5 @@ namespace Pyramid.Models
             }
         }
     }
+
 }

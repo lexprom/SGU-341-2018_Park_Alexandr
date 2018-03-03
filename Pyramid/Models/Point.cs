@@ -19,18 +19,18 @@ namespace Pyramid.Models
             this.z = z;
         }
 
-        public double GetX() => x;
-        public double GetY() => y;
-        public double GetZ() => z;
+        public double X { get { return x; } set { x = value; } }
+        public double Y { get { return y; } set { y = value; } }
+        public double Z { get { return z; } set { z = value; } }
 
         public double GetDistance(Point p2)
         {
             try
             {
                 return Math.Sqrt(
-                    Math.Pow(p2.GetX() - this.GetX(), 2) +
-                    Math.Pow(p2.GetY() - this.GetY(), 2) +
-                    Math.Pow(p2.GetZ() - this.GetZ(), 2)
+                    Math.Pow(p2.X - this.X, 2) +
+                    Math.Pow(p2.Y - this.Y, 2) +
+                    Math.Pow(p2.Z - this.Z, 2)
                     );
             }
             catch(Exception)

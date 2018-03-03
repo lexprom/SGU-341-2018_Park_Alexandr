@@ -12,10 +12,8 @@ namespace Pyramid
     {
         static void Main(string[] args)
         {
-            Figure pyramid = new Figure();
-            Point p1 = new Point(3, 0, 2);
-            Point p2 = new Point(3, 0, 3);
-            pyramid.ChangePoint(p1, p2);
+            FigureReader fr = new FigureReader();
+            Figure pyramid = new Figure(fr.ReadByFile());
             pyramid.Print();
         }
     }

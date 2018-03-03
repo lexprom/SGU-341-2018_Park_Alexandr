@@ -1,0 +1,7 @@
+C:\Users\pakas\Documents\SGU-341-2018_Park_Alexandr\Pyramid\bin\Debug\Pyramid.exe.config
+C:\Users\pakas\Documents\SGU-341-2018_Park_Alexandr\Pyramid\bin\Debug\Pyramid.exe
+C:\Users\pakas\Documents\SGU-341-2018_Park_Alexandr\Pyramid\bin\Debug\Pyramid.pdb
+C:\Users\pakas\Documents\SGU-341-2018_Park_Alexandr\Pyramid\obj\Debug\Pyramid.csprojResolveAssemblyReference.cache
+C:\Users\pakas\Documents\SGU-341-2018_Park_Alexandr\Pyramid\obj\Debug\Pyramid.csproj.CoreCompileInputs.cache
+C:\Users\pakas\Documents\SGU-341-2018_Park_Alexandr\Pyramid\obj\Debug\Pyramid.exe
+C:\Users\pakas\Documents\SGU-341-2018_Park_Alexandr\Pyramid\obj\Debug\Pyramid.pdb

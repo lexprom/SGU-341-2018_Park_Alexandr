@@ -8,12 +8,19 @@ namespace Pyramid.Models
     public class Figure
     {
         public List<Point> vertexes = new List<Point>();
-        private double height = 4;
+        private double height;
 
-        public Figure()
+        public Figure(List<Point> vertexes)
         {
-            FigureReader fr = new FigureReader();
-            fr.ReadByFile(this);
+            height = 4;
+            try
+            {
+                vertexes.ForEach(el => this.vertexes.Add(el));
+            }
+            catch(Exception)
+            {
+                throw new ArgumentOutOfRangeException("Out of range");
+            }
         }
 
         public double GetArea()
@@ -58,11 +65,10 @@ namespace Pyramid.Models
                 vertexes.Add(p2);
             }
         }
-        
+
         public void Print()
         {
-            FigureReader fr = new FigureReader();
-            fr.Print(this);
+            FigureReader.Print(this);
         }
     }
 }
