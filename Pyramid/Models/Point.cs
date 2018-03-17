@@ -1,27 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pyramid.Models
 {
-    public class Point
+    public class Point : IEquatable<Point>, ICloneable
     {
-        private double x;
-        private double y;
-        private double z;
-
         public Point(double x, double y, double z)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
+            X = x;
+            Y = y;
+            Z = z;
         }
 
-        public double X { get { return x; } set { x = value; } }
-        public double Y { get { return y; } set { y = value; } }
-        public double Z { get { return z; } set { z = value; } }
+        public double X { get; set; }
+
+        public double Y { get; set; }
+
+        public double Z { get; set; }
 
         public double GetDistance(Point p2)
         {
@@ -38,17 +32,25 @@ namespace Pyramid.Models
                 throw new ArgumentOutOfRangeException();
             }
         }
-        public override bool Equals(Object obj)
+        public override bool Equals(object obj)
         {
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-
-            Point p = (Point)obj;
-            return (x == p.x) && (y == p.y) && (z ==p.z);
+            return Equals(obj as Point);
         }
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
+        }
+
+        public bool Equals(Point other)
+        {
+            if (other == null || GetHashCode() != other.GetHashCode())
+                return false;
+            return (X == other.X) && (Y == other.Y) && (Z == other.Z);
+        }
+
+        public object Clone()
+        {
+            return new Point(X, Y, Z);
         }
     }
 }

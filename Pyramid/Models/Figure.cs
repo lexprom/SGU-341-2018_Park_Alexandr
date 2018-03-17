@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace Pyramid.Models
@@ -8,24 +7,28 @@ namespace Pyramid.Models
     public class Figure
     {
         public List<Point> vertexes = new List<Point>();
-        private double height;
+        private const double height = 4;
 
         public Figure(List<Point> vertexes)
         {
-            height = 4;
-            try
+            ValidationVertexes(vertexes);
+        }
+
+        public void ValidationVertexes(List<Point> vertexes)
+        {
+            if (vertexes.Count == 5)
             {
-                vertexes.ForEach(el => this.vertexes.Add(el));
+                vertexes.ForEach(el => this.vertexes.Add((Point)el.Clone()));
             }
-            catch(Exception)
+            else
             {
-                throw new ArgumentOutOfRangeException("Out of range");
+                throw new ArgumentOutOfRangeException("Wrong numbers of vertexes");
             }
         }
 
         public double GetArea()
         {
-            var res = vertexes.Where(x => x != vertexes[0]).ToList();
+            var res = vertexes.Where(x => !x.Equals(vertexes[0])).ToList();
             double a = res[0].GetDistance(res[1]);
             double b = res[1].GetDistance(res[2]);
             double c = res[2].GetDistance(res[3]);
@@ -45,7 +48,7 @@ namespace Pyramid.Models
 
         public double Volume()
         {
-            return 1.0 / 3.0 * height * GetArea();
+            return (1.0 / 3.0) * height * GetArea();
         }
 
 
@@ -64,11 +67,6 @@ namespace Pyramid.Models
             {
                 vertexes.Add(p2);
             }
-        }
-
-        public void Print()
-        {
-            FigureReader.Print(this);
         }
     }
 }
