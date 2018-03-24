@@ -10,7 +10,7 @@ namespace User
     {
         static void Main(string[] args)
         {
-            Employee emp = new Employee("Steve", "Jobs", "Stivenson","12.01.1203", 13, "iOS Developer", 0);
+            Employee emp = new Employee("Steve", "Jobs", "Stivenson","12.01.1203", 43, "iOS Developer", 8);
             Console.WriteLine(emp);
         }
     }

@@ -1,62 +1,82 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace User
 {
-    class User
+    public class User
     {
+        const string pattern = @"^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](1[0-9]|0[0-9])\d\d$";
         private string name;
         private string sec_name;
         private string mid_name;
         private string birth_day;
 
+        public User(string name, string secName, string midName, string birthDay, uint age)
+        {
+            Name = name;
+            Sec_Name = secName;
+            Mid_Name = midName;
+            Birth_Day = birthDay;
+            Age = age;
+        }
+
         public string Name
         {
-            get { return name ?? throw new ArgumentNullException(); }
-            set { name = value ?? throw new ArgumentNullException(); }
+            get { return name; }
+            set
+            {
+                if (value != null && !value.Any(char.IsDigit))
+                {
+                    name = value;
+                }
+                else throw new Exception("Inccorect name");
+            }
         }
 
         public string Sec_Name
         {
-            get { return sec_name ?? throw new ArgumentNullException(); }
-            set { sec_name = value ?? throw new ArgumentNullException(); }
+            get { return sec_name; }
+            set
+            {
+                if (value != null && !value.Any(char.IsDigit))
+                {
+                    sec_name = value;
+                }
+                else throw new Exception("Inccorect sec name");
+            }
         }
 
         public string Mid_Name
         {
-            get { return mid_name ?? throw new ArgumentNullException(); }
-            set { mid_name = value ?? throw new ArgumentNullException(); }
+            get { return mid_name; }
+            set
+            {
+                if (value != null && !value.Any(char.IsDigit))
+                {
+                    mid_name = value;
+                }
+                else throw new Exception("Inccorect mid name");
+            }
         }
 
         public string Birth_Day
         {
-            get { return birth_day ?? throw new ArgumentNullException(); }
+            get { return birth_day; }
             set
             {
-                string pattern = @"(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](1[0-9]|0[0-9])\d\d";
                 Match m = Regex.Match(value, pattern);
-                birth_day = m.Success ? value : throw new Exception("Inccorect date");
+                birth_day = m.Success 
+                    ? value 
+                    : throw new Exception("Inccorect date");
             }
         }
 
         public uint Age{ get;set; }
 
-        public User(string name, string sec_name, string mid_name,string bh, uint age)
-        {
-            Name = name;
-            Sec_Name = sec_name;
-            Mid_Name = mid_name;
-            Birth_Day = bh;
-            Age = age;
-        }
-
         public override string ToString()
         {
-            return Name + " " + Sec_Name + " " + Mid_Name + " " + Birth_Day + " " + Age; 
+            return string.Format($"Name = {Name} {Environment.NewLine}Second Name = {Sec_Name} {Environment.NewLine}Mid Name = {Mid_Name}{Environment.NewLine}Birthday = {Birth_Day}{Environment.NewLine}Age = {Age}{Environment.NewLine}");
         }
     }
 }
