@@ -11,15 +11,19 @@ namespace GraphicEditor
     {
         static void Main(string[] args)
         {
-            Shape height = new Shape(5);
-            Shape width = new Shape(10);
-            var shapeFigures = new List<Shape> { height, width, new Rectangle(width,height)};
-            shapeFigures.ForEach(item => item.Draw());
+            Point point = new Point(2, 2);
+            Circle circle = new Circle(point, 4);
+            Ring ring = new Ring(circle, 2);
+            Shape width = new Shape(new Point(2,2),new Point(4,2));
+            Shape height = new Shape(new Point(2,1), new Point(4,1));
+            Rectangle rectangle = new Rectangle(height, width);
 
-            Circle circleOut = new Circle(10);
-            Circle circleIn = new Circle(5);
-            var circleFigures = new List<Circle> { circleOut, circleIn, new Ring(circleOut, circleIn) };
-            circleFigures.ForEach(item => item.Draw());
+            point.Draw();
+            circle.Draw();
+            ring.Draw();
+            width.Draw();
+            height.Draw();
+            rectangle.Draw();
         }
     }
 }

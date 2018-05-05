@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace GraphicEditor.Figures
 {
-    public class Shape
+    public class Shape : IDraw
     {
-        public double Size { get; set; }
+        private Point x;
+        private Point y;
 
-        public Shape() { }
-
-        public Shape(double size)
+        public Shape(Point p, Point p2)
         {
-            Size = size;
+            x = p;
+            y  = p2;
         }
 
-        public virtual void Draw()
+        public void Draw()
         {
-            Console.WriteLine($"Type <{GetType()}> {Environment.NewLine}Size = {Size} {Environment.NewLine}");
+            Console.WriteLine($"Type <{GetType()}> {Environment.NewLine}Shape = {x.X}\t{y.Y}  {Environment.NewLine}");
         }
     }
 }

@@ -6,25 +6,43 @@ using System.Threading.Tasks;
 
 namespace GraphicEditor.Figures
 {
-    public class Ring : Circle
+    public class Ring : IDraw
     {
-        private Circle circleOut;
-        private Circle circleIn;
+        private double ringRadius;
+        private Circle greaterCircle;
 
-        public Ring(Circle c1, Circle c2)
+        public Ring(Circle greaterCircle, double ringRadius)
         {
-            if(c1.Radius - c2.Radius < Double.Epsilon)
-            {
-                throw new Exception("Radius OUT circle less than IN circle");
-            }
-            circleOut = c1;
-            circleIn = c2;
+            GreaterCircle = greaterCircle;
+            RingRadius = ringRadius;
         }
 
-        public override void Draw()
+        public Circle GreaterCircle
         {
-            Console.WriteLine($"Type <{GetType()}> {Environment.NewLine}Radius Circle 1 = {circleOut.Radius} {Environment.NewLine}" +
-                $"Radius Circle 2 = {circleIn.Radius} {Environment.NewLine}");
+            get => greaterCircle;
+            set
+            {
+                if (value == null && value.Radius > RingRadius)
+                    throw new Exception("Wrong circle!");
+                else
+                    greaterCircle = value;
+            }
+        }
+        public double RingRadius
+        {
+            get => ringRadius;
+            set
+            {
+                if (value < 0 || value > GreaterCircle.Radius || GreaterCircle == null)
+                    throw new Exception("Wrong radius!");
+
+                ringRadius = value;
+            }
+        }
+        public void Draw()
+        {
+            Console.WriteLine($"Type <{GetType()}> {Environment.NewLine}Radius CircleGreater = {greaterCircle.Radius} {Environment.NewLine}" +
+                $"Radius CircleLower = {ringRadius} {Environment.NewLine}");
         }
     }
 }

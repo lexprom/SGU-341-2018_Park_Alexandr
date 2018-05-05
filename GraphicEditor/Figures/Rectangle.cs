@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace GraphicEditor.Figures
 {
-    class Rectangle : Shape
+    class Rectangle : IDraw
     {
-        private Shape width1,width2;
-        private Shape height1,height2;
+        private Shape width1, width2;
+        private Shape height1, height2;
 
-        public Rectangle(Shape width, Shape height)
+        public Rectangle(Shape height, Shape width)
         {
             width1 = width2 = width;
             height1 = height2 = height;
         }
 
-        public override void Draw()
+        public void Draw()
         {
-            Console.WriteLine($"Type <{GetType()}> {Environment.NewLine}Width = {width1.Size} {Environment.NewLine}Height = {height1.Size} {Environment.NewLine}");
+            Console.WriteLine($"Type <{GetType()}> {Environment.NewLine} Width = {width1} \t Height = {height1}");
         }
     }
 }
