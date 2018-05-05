@@ -7,38 +7,23 @@ namespace Ring
 {
     public class Circle
     {
-        public double Radius { get; private set; }
-
-        public Point Center { get; private set; }
-
-        public Circle(double radius, Point center)
+        private double radius;
+        public Circle(Point center, double radius)
         {
-            Radius = radius;
             Center = center;
+            Radius = radius;
         }
 
-        public Circle(){}
-
-        public double Square
+        public double Radius
         {
-            get { return Math.PI * Radius * Radius; }
+            get => radius;
+            set
+            {
+                if (value <= 0)
+                    throw new System.Exception("Radius can't be less than zero.");
+                radius = value;
+            }
         }
-
-        public double Circuit
-        {
-            get { return Math.PI * 2 * Radius; }
-        }
-
-        public bool IsInside(Point point)
-        {
-            Point vector = new Point(point.X - Center.X, point.Y - Center.Y);
-            double distance = vector.X * vector.X + vector.Y * vector.Y;
-            return distance <= Radius * Radius;
-        }
-
-        public override string ToString()
-        {
-            return String.Format("Radius: {0}; Center: {1};", Radius, Center);
-        }
+        public Point Center { get; set; }
     }
 }

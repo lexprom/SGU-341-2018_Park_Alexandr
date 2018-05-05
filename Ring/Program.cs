@@ -9,11 +9,8 @@ namespace Ring
     {
         static void Main(string[] args)
         {
-            Circle c1 = new Circle(10, new Point(0, 0)); // out circle
-            Circle c2 = new Circle(5, new Point(0, 0)); // in circle
-            Ring ring = new Ring(c1, c2,new Point(1,1));
-            Console.WriteLine("Ring Square = " + ring.GetSquare);
-            Console.WriteLine("Ring Radius = " + ring.GetRadius);
+            Ring ring = new Ring(new Circle(new Point(3, 3), 5), 2);
+            Console.WriteLine(ring);
         }
     }
 }

@@ -2,35 +2,58 @@
 
 namespace Ring
 {
-   public class Ring : Circle
+   public class Ring
     {
-        private Circle circleIn;
-        private Circle circleOut;
+        private double ringRadius;
+        private Circle greaterCircle;
 
-        public Ring(Circle c1, Circle c2,Point center)
+        public Ring(Circle greaterCircle, double ringRadius)
         {
-            if (c1.Radius - c2.Radius < Double.Epsilon)
-            {
-                throw new Exception("Диаметр круга меньше диаметра вычитаемого круга!");
-            }
-            circleOut = c1;
-            circleIn = c2;
+            GreaterCircle = greaterCircle;
+            RingRadius = ringRadius;
         }
 
-        public double GetSquare
+        public Circle GreaterCircle
         {
-            get
+            get => greaterCircle;
+            set
             {
-                return Math.PI * (Math.Pow(circleOut.Radius, 2) - Math.Pow(circleIn.Radius, 2));
+                if (value == null && value.Radius > RingRadius)
+                    throw new Exception("Wrong circle!");
+                else
+                    greaterCircle = value;
+            }
+        }
+        public double RingRadius
+        {
+            get => ringRadius;
+            set
+            {
+                if (value < 0 || value > GreaterCircle.Radius || GreaterCircle == null)
+                    throw new Exception("Wrong radius!");
+
+                ringRadius = value;
             }
         }
 
-        public double GetRadius
+        public double GetArea()
         {
-            get
-            {
-                return circleOut.Circuit + circleIn.Circuit;
-            }
+            return Math.PI * (GreaterCircle.Radius * GreaterCircle.Radius - RingRadius * RingRadius);
+        }
+
+        public double GetGreaterCircleLength()
+        {
+            return 2 * Math.PI * GreaterCircle.Radius;
+        }
+
+        public double GetLesserCircleLength()
+        {
+            return 2 * Math.PI * RingRadius;
+        }
+
+        public override string ToString()
+        {
+            return $"Center - ({GreaterCircle.Center.X}, {GreaterCircle.Center.Y}), greater radius - {GreaterCircle.Radius}, lesser radius - {RingRadius}";
         }
     }
 }
