@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphicEditor.Figures
 {
-    public class Circle : IDraw
+    public class Circle : Draw
     {
         private double radius;
         public Circle(Point center, double radius)
@@ -26,7 +26,8 @@ namespace GraphicEditor.Figures
             }
         }
         public Point Center { get; set; }
-        public virtual void Draw()
+
+        public override void Drawing()
         {
             Console.WriteLine($"Type <{GetType()}> {Environment.NewLine}Radius = {Radius} {Environment.NewLine}");
         }

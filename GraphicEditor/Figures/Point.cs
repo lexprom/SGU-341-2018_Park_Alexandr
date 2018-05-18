@@ -1,11 +1,12 @@
-﻿using System;
+﻿using GraphicEditor.Figures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace GraphicEditor
 {
-    public class Point : IDraw
+    public class Point : Draw
     {
         public Point(double x, double y)
         {
@@ -13,10 +14,13 @@ namespace GraphicEditor
             Y = y;
         }
 
+        protected Point()
+        { }
+
         public double X { get; private set; }
         public double Y { get; private set; }
 
-        public void Draw()
+        public override void Drawing()
         {
             Console.WriteLine($"Type <{GetType()}> {Environment.NewLine}X = {X} \t Y = {Y} {Environment.NewLine}");
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraphicEditor.Figures
 {
-    public class Ring : IDraw
+    public class Ring : Draw
     {
         private double ringRadius;
         private Circle greaterCircle;
@@ -39,7 +39,7 @@ namespace GraphicEditor.Figures
                 ringRadius = value;
             }
         }
-        public void Draw()
+        public override void Drawing()
         {
             Console.WriteLine($"Type <{GetType()}> {Environment.NewLine}Radius CircleGreater = {greaterCircle.Radius} {Environment.NewLine}" +
                 $"Radius CircleLower = {ringRadius} {Environment.NewLine}");

@@ -6,20 +6,45 @@ using System.Threading.Tasks;
 
 namespace GraphicEditor.Figures
 {
-    public class Shape : IDraw
+    public class Shape : Draw
     {
-        private Point x;
-        private Point y;
+        private Point first;
+        private Point last;
 
-        public Shape(Point p, Point p2)
+        public Shape(Point first, Point last)
         {
-            x = p;
-            y  = p2;
+            First = first;
+            Last = last;
         }
 
-        public void Draw()
+        public Point First
         {
-            Console.WriteLine($"Type <{GetType()}> {Environment.NewLine}Shape = {x.X}\t{y.Y}  {Environment.NewLine}");
+            get => first;
+            set
+            {
+                if (first == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                first = value;
+            }
+        }
+        public Point Last
+        {
+            get => last;
+            set
+            {
+                if (last == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                last = value;
+            }
+        }
+
+        public override void Drawing()
+        {
+            Console.WriteLine($"Line: start - ({First.X}, {First.Y}), end - ({Last.X}, {Last.Y})");
         }
     }
 }

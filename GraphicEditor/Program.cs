@@ -11,19 +11,21 @@ namespace GraphicEditor
     {
         static void Main(string[] args)
         {
-            Point point = new Point(2, 2);
-            Circle circle = new Circle(point, 4);
-            Ring ring = new Ring(circle, 2);
-            Shape width = new Shape(new Point(2,2),new Point(4,2));
-            Shape height = new Shape(new Point(2,1), new Point(4,1));
-            Rectangle rectangle = new Rectangle(height, width);
+            //Point[] arr = new Point[] { new Point(1, 2), new Point(4, 2), new Point(1, 0), new Point(4, 0) };
 
-            point.Draw();
-            circle.Draw();
-            ring.Draw();
-            width.Draw();
-            height.Draw();
-            rectangle.Draw();
+            //Rectangle rec = new Rectangle(arr);
+            //rec.Drawing();
+
+            Ring ring = new Ring(new Circle(new Point(-3.2, 4.5), 20), 14.5);
+            ring.Drawing();
+
+            Shape line = new Shape(new Point(3.3, 4.4), new Point(1.8, -4.5));
+            line.Drawing();
+
+            Circle circle = new Circle(new Point(3.3, 4.4), 13);
+            circle.Drawing();
+
+            Console.WriteLine("*************************************");
         }
     }
 }

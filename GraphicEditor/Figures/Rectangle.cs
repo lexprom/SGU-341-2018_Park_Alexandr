@@ -6,20 +6,31 @@ using System.Threading.Tasks;
 
 namespace GraphicEditor.Figures
 {
-    class Rectangle : IDraw
+    public class Rectangle : Draw
     {
-        private Shape width1, width2;
-        private Shape height1, height2;
+        private Point[] points;
 
-        public Rectangle(Shape height, Shape width)
+        public Rectangle(Point[] points)
         {
-            width1 = width2 = width;
-            height1 = height2 = height;
+            Points = points;
         }
 
-        public void Draw()
+        public Point[] Points
         {
-            Console.WriteLine($"Type <{GetType()}> {Environment.NewLine} Width = {width1} \t Height = {height1}");
+            get => points;
+            set
+            {
+                if (points == null || points.Length != 4)
+                {
+                    throw new Exception("Wron' array");
+                }
+                points = value;
+            }
+        }
+
+        public override void Drawing()
+        {
+            Console.WriteLine($"Type <{GetType()}> {Environment.NewLine} {Points[0]} : {Points[1]} : {Points[2]} : {Points[3]}");
         }
     }
 }
