@@ -1,6 +1,6 @@
 ﻿using Ninject;
-using Ninject.Syntax;
 using Ninject.Modules;
+using Ninject.Web.Mvc;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -19,9 +19,10 @@ namespace TLayerApp.WEB
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //injection dependecies
+
             NinjectModule userModule = new UserModule();
-            NinjectModule serviceModule = new ServiceModule(@"Data Source = LEX\SQLSERVEREXP; Integrated Security = SSPI; Initial Catalog = Athlets");
-            var kernel = new StandardKernel(userModule, serviceModule);
+            NinjectModule serviceModule = new ServiceModule(@"Data Source=LEX\SQLSERVEREXP;Integrated Security=SSPI;Initial Catalog=Athlets");
+            var kernel = new StandardKernel(userModule,serviceModule);
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }

@@ -20,7 +20,7 @@ namespace TLayerApp.DAL.Repositories
             db = new UserContext(connectionString);
         }
 
-        public IRepository<User> Users
+        public IRepository<User> User
         {
             get
             {
@@ -32,7 +32,7 @@ namespace TLayerApp.DAL.Repositories
             }
         }
 
-        public IRepository<Medal> Medals
+        public IRepository<Medal> Medal
         {
             get
             {

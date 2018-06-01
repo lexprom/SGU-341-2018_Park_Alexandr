@@ -22,14 +22,15 @@ namespace TLayerApp.BLL.Services
 
         public void AssignMedal(MedalDTO medalDTO)
         {
-            User user = DataBase.Users.Get(medalDTO.UserID);
-            Medal medal = DataBase.Medals.Get(medalDTO.ID);
+            User user = DataBase.User.Get(1);
+            Medal medal = DataBase.Medal.Get(medalDTO.ID);
             if (user == null)
-                throw new Exception("404");
-            user.Medals.Add(medal);
-            medal.Users.Add(user);
-            DataBase.Users.Update(user);
-            DataBase.Medals.Update(medal);
+                throw new Exception("404 not found User");
+            if (medal == null)
+                throw new Exception("404 not found Medal");
+ 
+            DataBase.User.Update(user);
+            DataBase.Medal.Update(medal);
             DataBase.Save();
         }
 
@@ -42,7 +43,13 @@ namespace TLayerApp.BLL.Services
         public IEnumerable<UserDTO> GetUsers()
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<User>, List<UserDTO>>(DataBase.Users.GetAll());
+            return mapper.Map<IEnumerable<User>, List<UserDTO>>(DataBase.User.GetAll());
+        }
+
+        public MedalDTO GetMedal(int id)
+        {
+            var medal = DataBase.Medal.Get(1);
+            return new MedalDTO { ID = medal.ID, Material = medal.Material, Name = medal.Name, UserID = 1};
         }
     }
 }

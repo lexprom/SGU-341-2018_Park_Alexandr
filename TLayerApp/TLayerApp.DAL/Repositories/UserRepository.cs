@@ -21,22 +21,22 @@ namespace TLayerApp.DAL.Repositories
 
         public IEnumerable<User> GetAll()
         {
-            return db.Users;
+            return db.User;
         }
 
         public User Get(int id)
         {
-            return db.Users.Find(id);
+            return db.User.Find(id);
         }
 
         public IEnumerable<User> Find(Func<User, bool> predicate)
         {
-            return db.Users.Where(predicate).ToList();
+            return db.User.Where(predicate).ToList();
         }
 
         public void Create(User item)
         {
-            db.Users.Add(item);
+            db.User.Add(item);
         }
 
         public void Update(User item)
@@ -46,10 +46,10 @@ namespace TLayerApp.DAL.Repositories
 
         public void Delete(int id)
         {
-            User user = db.Users.Find(id);
+            User user = db.User.Find(id);
             if(user != null)
             {
-                db.Users.Remove(user);
+                db.User.Remove(user);
             }
         }
     }

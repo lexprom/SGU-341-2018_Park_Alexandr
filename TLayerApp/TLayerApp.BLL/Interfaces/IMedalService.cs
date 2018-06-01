@@ -9,6 +9,7 @@ namespace TLayerApp.BLL.Interfaces
 {
     public interface IMedalService
     {
+        MedalDTO GetMedal(int id);
         IEnumerable<UserDTO> GetUsers();
         void AssignMedal(MedalDTO userDTO);
         void Dispose();

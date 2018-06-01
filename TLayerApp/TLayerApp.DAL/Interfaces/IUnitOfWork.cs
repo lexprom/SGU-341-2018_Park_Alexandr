@@ -9,8 +9,8 @@ namespace TLayerApp.DAL.Interfaces
 {
     public interface IUnitOfWork
     {
-        IRepository<User> Users { get; }
-        IRepository<Medal> Medals { get; }
+        IRepository<User> User { get; }
+        IRepository<Medal> Medal { get; }
         void Save();
     }
 }

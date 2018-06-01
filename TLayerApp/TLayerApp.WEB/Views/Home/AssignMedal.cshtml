@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <input type="hidden" name="PhoneId" value="@Model.ID" />
+        <input type="hidden" name="MedalId" value="@Model.ID" />
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -23,7 +23,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Make Order" class="btn btn-default" />
+                <input type="submit" value="Add medal" class="btn btn-default" />
             </div>
         </div>
     </div>

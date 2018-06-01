@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Ninject.Modules;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Ninject.Modules;
 using TLayerApp.BLL.Interfaces;
 using TLayerApp.BLL.Services;
 

@@ -21,31 +21,31 @@ namespace TLayerApp.DAL.Repositories
 
         public void Create(Medal item)
         {
-            db.Medals.Add(item);
+            db.Medal.Add(item);
         }
 
         public void Delete(int id)
         {
-            Medal medal = db.Medals.Find(id);
+            Medal medal = db.Medal.Find(id);
             if(medal != null)
             {
-                db.Medals.Remove(medal);
+                db.Medal.Remove(medal);
             }
         }
 
         public IEnumerable<Medal> Find(Func<Medal, bool> predicate)
         {
-            return db.Medals.Include(o => o.Users).Where(predicate).ToList();
+            return db.Medal.Include(o => o.Users).Where(predicate).ToList();
         }
 
         public Medal Get(int id)
         {
-            return db.Medals.Find(id);
+            return db.Medal.Find(id);
         }
 
         public IEnumerable<Medal> GetAll()
         {
-            return db.Medals.Include(o => o.Users);
+            return db.Medal.Include(o => o.Users);
         }
 
         public void Update(Medal item)

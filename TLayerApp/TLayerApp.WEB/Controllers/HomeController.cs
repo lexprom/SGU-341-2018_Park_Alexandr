@@ -15,9 +15,6 @@ namespace TLayerApp.WEB.Controllers
     {
         IMedalService medalService;
 
-        public HomeController()
-        { }
-
         public HomeController(IMedalService service)
         {
             medalService = service;
@@ -41,13 +38,14 @@ namespace TLayerApp.WEB.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
-        public ActionResult AssignMedal(MedalDTO medalDTO)
+        
+        public ActionResult AssignMedal(int id)
         {
-            medalService.AssignMedal(medalDTO);
+            MedalDTO medal = medalService.GetMedal(id);
+            medalService.AssignMedal(medal);
             return View(medalService.GetUsers());
         }
     }

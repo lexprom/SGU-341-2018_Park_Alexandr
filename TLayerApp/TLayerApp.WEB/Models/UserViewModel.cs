@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TLayerApp.BLL.DTO;
 
 namespace TLayerApp.WEB.Models
 {
@@ -14,5 +15,7 @@ namespace TLayerApp.WEB.Models
         public string Town { get; set; }
         public string Street { get; set; }
         public int HomeNumber { get; set; }
+        public ICollection<MedalDTO> Medals { get; set; }
+        public int MedalID { get; set; }
     }
 }
